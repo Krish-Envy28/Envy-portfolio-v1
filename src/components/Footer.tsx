@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, ChevronDown } from 'lucide-react';
 
 export default function Footer() {
-  const [formData, setFormData] = useState({ name: '', email: '', project: 'Web Design', details: '' });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({ name: '', email: '', project: 'Web Design', details: '', _honey: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'rate_limit'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,8 +18,11 @@ export default function Footer() {
       });
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', project: 'Web Design', details: '' });
+        setFormData({ name: '', email: '', project: 'Web Design', details: '', _honey: '' });
         setTimeout(() => setStatus('idle'), 3000);
+      } else if (response.status === 429) {
+        setStatus('rate_limit');
+        setTimeout(() => setStatus('idle'), 4000);
       } else {
         setStatus('error');
         setTimeout(() => setStatus('idle'), 3000);
@@ -91,6 +94,17 @@ export default function Footer() {
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-12 font-heading font-bold uppercase tracking-widest text-sm">
               
+              {/* Honeypot Field */}
+              <input 
+                type="text" 
+                name="_honey" 
+                value={formData._honey}
+                onChange={(e) => setFormData({ ...formData, _honey: e.target.value })}
+                className="opacity-0 absolute -z-10 w-0 h-0" 
+                tabIndex={-1} 
+                autoComplete="off" 
+              />
+              
               {/* Row 1 */}
               <div className="flex flex-col md:flex-row gap-12">
                 <div className="flex flex-col w-full group">
@@ -151,10 +165,13 @@ export default function Footer() {
               {/* Submit Button */}
               <button 
                 type="submit" 
-                disabled={status === 'loading' || status === 'success'}
+                disabled={status === 'loading' || status === 'success' || status === 'rate_limit'}
                 className="bg-white text-black self-start px-8 py-3 text-xs tracking-widest hover:bg-white/90 transition-colors mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {status === 'loading' ? 'SENDING...' : status === 'success' ? 'SENT!' : status === 'error' ? 'ERROR! TRY AGAIN' : "LET'S TALK"}
+                {status === 'loading' ? 'SENDING...' : 
+                 status === 'success' ? 'SENT!' : 
+                 status === 'rate_limit' ? 'TOO MANY REQUESTS' : 
+                 status === 'error' ? 'ERROR! TRY AGAIN' : "LET'S TALK"}
               </button>
 
             </form>
