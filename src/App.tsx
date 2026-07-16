@@ -32,11 +32,12 @@ export default function App() {
   // Initialize Lenis for buttery smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.05, // Ultra-smooth floating scroll interpolation
+      duration: 1.2, // Use duration for consistent momentum instead of heavy lerp
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Premium exponential easing
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 1.2, // Slightly faster wheel response to feel less laggy
       touchMultiplier: 2,
     });
 
