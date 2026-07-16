@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'motion/react';
 import Lenis from 'lenis';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import CredentialsPage from './pages/CredentialsPage';
 import AboutPage from './pages/AboutPage';
+import PageTransition from './components/PageTransition';
 
 function ScrollToHashElement() {
   const { hash, pathname } = useLocation();
@@ -25,6 +27,8 @@ function ScrollToHashElement() {
 }
 
 export default function App() {
+  const location = useLocation();
+
   // Initialize Lenis for buttery smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
@@ -65,11 +69,13 @@ export default function App() {
       <Header />
 
       <main className="relative z-10">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/credentials" element={<CredentialsPage />} />
-        </Routes>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+            <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
+            <Route path="/credentials" element={<PageTransition><CredentialsPage /></PageTransition>} />
+          </Routes>
+        </AnimatePresence>
       </main>
 
       {/* Footer */}

@@ -114,9 +114,9 @@ export default function AboutPage() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             style={{ willChange: "transform, opacity" }}
-            className="flex flex-col gap-12"
+            className="flex flex-col items-center md:items-start text-center md:text-left gap-12"
           >
-            <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
+            <h3 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
               An AI Engineer, Frontend Developer, and UI/UX Designer dedicated to crafting intelligent, user-centered, and visually compelling digital experiences.
             </h3>
             
@@ -137,7 +137,7 @@ export default function AboutPage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="font-mono text-[10px] font-bold uppercase tracking-widest text-white/50 mb-12"
+            className="font-mono text-[10px] font-bold uppercase tracking-widest text-white/50 mb-12 text-center md:text-left"
           >
             Core Expertise
           </motion.h4>
@@ -166,7 +166,7 @@ export default function AboutPage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="font-mono text-[10px] font-bold uppercase tracking-widest text-white/50 mb-12"
+            className="font-mono text-[10px] font-bold uppercase tracking-widest text-white/50 mb-12 text-center md:text-left"
           >
             Experience
           </motion.h4>
@@ -206,7 +206,7 @@ export default function AboutPage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="font-mono text-[10px] font-bold uppercase tracking-widest text-white/50 mb-12"
+            className="font-mono text-[10px] font-bold uppercase tracking-widest text-white/50 mb-12 text-center md:text-left"
           >
             Education
           </motion.h4>

@@ -97,7 +97,7 @@ export default function Header() {
                     <Link
                       to={item.href}
                       onClick={(e) => handleNavClick(e, item.href)}
-                      className="font-heading text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white/60 hover:text-white hover:scale-105 transition-all duration-300 flex items-baseline gap-4 group"
+                      className="font-heading text-3xl sm:text-5xl lg:text-7xl font-extrabold text-white/60 hover:text-white hover:scale-105 transition-all duration-300 flex items-baseline gap-4 group"
                     >
                       {item.label}
                     </Link>
@@ -108,7 +108,7 @@ export default function Header() {
 
             <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-white/5 text-xs font-mono text-white/40">
               <div /> {/* Empty div to maintain flex-between layout if needed, or just let the links align right */}
-              <div className="flex gap-6 mt-4 sm:mt-0">
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-6 sm:mt-0">
                 <Link to="/#projects" onClick={(e) => handleNavClick(e, '/#projects')} className="hover:text-white transition-colors">WORK</Link>
                 <Link to="/credentials" onClick={() => setIsOpen(false)} className="hover:text-white transition-colors">CREDENTIALS</Link>
                 <Link to="/#contact" onClick={(e) => handleNavClick(e, '/#contact')} className="hover:text-white transition-colors">LET'S TALK</Link>
