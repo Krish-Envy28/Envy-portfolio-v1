@@ -1,5 +1,0 @@
-@echo off
-set GIT="C:\Program Files\Git\cmd\git.exe"
-%GIT% add .
-%GIT% commit -m "UI polish and README update"
-%GIT% push
