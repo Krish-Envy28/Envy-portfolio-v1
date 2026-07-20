@@ -86,7 +86,7 @@ export default function AboutPage() {
             className="w-full max-w-[240px] aspect-[4/5] flex items-center justify-center relative overflow-hidden mx-auto md:mx-0 group cursor-pointer bg-black"
           >
             <img 
-              src="/profile.jpeg" 
+              src="/profile.png" 
               alt="Profile" 
               className="absolute inset-0 w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-[0.16,1,0.3,1] mix-blend-lighten"
             />
